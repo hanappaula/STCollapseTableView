@@ -30,6 +30,13 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol ToggleTableViewDelegate <NSObject>
+
+- (void)sectionOpenned:(int) index;
+- (void)sectionClosed:(int) index;
+
+@end
+
 /**
  *	STCollapseTableView is a UITableView subclass that automatically collapse and/or expand your sections.
  *
@@ -44,6 +51,8 @@
  *  Default value is YES.
  */
 @property (nonatomic, assign) BOOL exclusiveSections;
+
+@property (nonatomic, weak) id <ToggleTableViewDelegate> toogleDelegate;
 
 /**
  *	This property allows STCollapseTableView to automatically handle tap on headers in order to collapse or expand sections.
